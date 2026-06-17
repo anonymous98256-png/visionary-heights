@@ -1,29 +1,35 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PageShell } from "@/components/site/PageShell";
+import { Hero } from "@/components/home/Hero";
+import { Overview } from "@/components/home/Overview";
+import { Expertise } from "@/components/home/Expertise";
+import { FeaturedProjects } from "@/components/home/FeaturedProjects";
+import { WhyChoose } from "@/components/home/WhyChoose";
+import { Stats } from "@/components/home/Stats";
+import { Process } from "@/components/home/Process";
+import { ContactCTA } from "@/components/home/ContactCTA";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Ratnanjali Group — Building Landmarks. Creating Value." },
+      { name: "description", content: "Ahmedabad-based real estate developer crafting landmark residential, commercial, hospitality and mixed-use developments." },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <PageShell>
+      <Hero />
+      <Overview />
+      <Expertise />
+      <FeaturedProjects />
+      <WhyChoose />
+      <Stats />
+      <Process />
+      <ContactCTA />
+    </PageShell>
   );
 }
