@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
@@ -6,13 +7,7 @@ export function Footer() {
       <div className="container-x mx-auto max-w-[1400px] py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center border border-foreground/70 font-display text-xl leading-none">R</div>
-              <div className="leading-tight">
-                <div className="font-display text-2xl">Ratnanjali</div>
-                <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Group</div>
-              </div>
-            </div>
+            <Logo className="h-20 w-auto" />
             <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
               Crafting magnificent structures that exude class and luxury across Ahmedabad — residences, commercial landmarks, weekend estates and mixed-use developments.
             </p>
