@@ -35,23 +35,35 @@ const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
 export function ExpertiseScrolly() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [progress, setProgress] = useState(0);
+  const target = useRef(0);
+  const current = useRef(0);
+  const raf = useRef<number | null>(null);
 
   useEffect(() => {
-    const handle = () => {
+    const computeTarget = () => {
       const el = sectionRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
       const total = el.offsetHeight - vh;
-      const scrolled = -rect.top;
-      setProgress(clamp01(scrolled / total));
+      target.current = clamp01(-rect.top / total);
     };
-    handle();
-    window.addEventListener("scroll", handle, { passive: true });
-    window.addEventListener("resize", handle);
+    const tick = () => {
+      current.current = lerp(current.current, target.current, 0.1);
+      if (Math.abs(current.current - target.current) < 0.0005) current.current = target.current;
+      setProgress(current.current);
+      raf.current = requestAnimationFrame(tick);
+    };
+    computeTarget();
+    current.current = target.current;
+    setProgress(target.current);
+    raf.current = requestAnimationFrame(tick);
+    window.addEventListener("scroll", computeTarget, { passive: true });
+    window.addEventListener("resize", computeTarget);
     return () => {
-      window.removeEventListener("scroll", handle);
-      window.removeEventListener("resize", handle);
+      if (raf.current) cancelAnimationFrame(raf.current);
+      window.removeEventListener("scroll", computeTarget);
+      window.removeEventListener("resize", computeTarget);
     };
   }, []);
 
