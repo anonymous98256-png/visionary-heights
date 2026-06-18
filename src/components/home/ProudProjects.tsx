@@ -101,13 +101,8 @@ export function ProudProjects() {
               </button>
             </div>
 
-            {/* Indicators / counter */}
-            <div className="mt-8 flex items-center justify-between">
-              <div className="font-display num text-2xl text-foreground/70">
-                <span className="text-foreground">{String(idx + 1).padStart(2, "0")}</span>
-                <span className="mx-3 text-foreground/30">/</span>
-                <span>{String(list.length).padStart(2, "0")}</span>
-              </div>
+            {/* Indicators */}
+            <div className="mt-8 flex items-center justify-end">
               <div className="flex gap-3">
                 {list.map((p, i) => (
                   <button
