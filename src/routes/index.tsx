@@ -2,11 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { Hero } from "@/components/home/Hero";
 import { Overview } from "@/components/home/Overview";
-import { Expertise } from "@/components/home/Expertise";
-import { FeaturedProjects } from "@/components/home/FeaturedProjects";
+import { ExpertiseScrolly } from "@/components/home/ExpertiseScrolly";
+import { ProudProjects } from "@/components/home/ProudProjects";
 import { WhyChoose } from "@/components/home/WhyChoose";
 import { Stats } from "@/components/home/Stats";
-import { Process } from "@/components/home/Process";
+import { VideoShowcase } from "@/components/home/VideoShowcase";
 import { ContactCTA } from "@/components/home/ContactCTA";
 
 export const Route = createFileRoute("/")({
@@ -24,11 +24,11 @@ function Index() {
     <PageShell>
       <Hero />
       <Overview />
-      <Expertise />
-      <FeaturedProjects />
+      <ExpertiseScrolly />
+      <ProudProjects />
       <WhyChoose />
       <Stats />
-      <Process />
+      <VideoShowcase />
       <ContactCTA />
     </PageShell>
   );
