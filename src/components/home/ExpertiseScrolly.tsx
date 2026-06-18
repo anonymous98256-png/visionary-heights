@@ -118,23 +118,8 @@ export function ExpertiseScrolly() {
           <div className="eyebrow text-white/70"><span className="rule" />Development Expertise</div>
         </div>
 
-        {/* Progress indicator */}
-        <div className="pointer-events-none absolute bottom-8 left-1/2 z-50 -translate-x-1/2">
-          <div className="flex items-center gap-3">
-            {chapters.map((_, i) => {
-              const active = progress >= i * 0.2 && progress < (i + 1) * 0.2 + 0.001;
-              const done = progress >= (i + 1) * 0.2;
-              return (
-                <div key={i} className="flex items-center gap-3">
-                  <span className={`text-[10px] tracking-[0.3em] transition-colors ${active || done ? "text-gold-soft" : "text-white/40"}`}>
-                    0{i + 1}
-                  </span>
-                  {i < chapters.length - 1 && <span className={`h-px w-8 transition-colors ${done ? "bg-gold-soft" : "bg-white/20"}`} />}
-                </div>
-              );
-            })}
-          </div>
-        </div>
+
+
 
         {chapters.map((c, i) => {
           const { style, isFull } = computePanel(i);
