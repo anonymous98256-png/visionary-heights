@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { Hero } from "@/components/home/Hero";
 import { Overview } from "@/components/home/Overview";
-import { ExpertiseScrolly } from "@/components/home/ExpertiseScrolly";
+import { Expertise } from "@/components/home/Expertise";
 import { ProudProjects } from "@/components/home/ProudProjects";
 import { WhyChoose } from "@/components/home/WhyChoose";
 import { Stats } from "@/components/home/Stats";
@@ -24,11 +24,11 @@ function Index() {
     <PageShell>
       <Hero />
       <Overview />
-      <ExpertiseScrolly />
+      <Expertise />
       <ProudProjects />
       <WhyChoose />
-      <Stats />
       <VideoShowcase />
+      <Stats />
       <ContactCTA />
     </PageShell>
   );

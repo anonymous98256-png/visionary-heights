@@ -5,21 +5,52 @@ import { Reveal } from "@/components/site/RevealOnScroll";
 import { projects } from "@/lib/projects";
 
 const AUTO_MS = 5500;
+const TRANSITION_MS = 1100;
 
 export function ProudProjects() {
   const list = projects.slice(0, 4);
+  // Duplicate first slide at the end for seamless loop
+  const slides = [...list, list[0]];
   const [idx, setIdx] = useState(0);
+  const [animate, setAnimate] = useState(true);
   const [hover, setHover] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => setIdx((i) => (i + 1) % list.length), AUTO_MS);
+    timer.current = setTimeout(() => setIdx((i) => i + 1), AUTO_MS);
     return () => { if (timer.current) clearTimeout(timer.current); };
+  }, [idx]);
+
+  // When we land on the cloned slide (idx === list.length), snap back to 0 without animation
+  useEffect(() => {
+    if (idx === list.length) {
+      const t = setTimeout(() => {
+        setAnimate(false);
+        setIdx(0);
+        // re-enable animation on next frame
+        requestAnimationFrame(() => requestAnimationFrame(() => setAnimate(true)));
+      }, TRANSITION_MS);
+      return () => clearTimeout(t);
+    }
   }, [idx, list.length]);
 
-  const go = (dir: 1 | -1) =>
-    setIdx((i) => (i + dir + list.length) % list.length);
+  const goNext = () => setIdx((i) => i + 1);
+  const goPrev = () => {
+    if (idx === 0) {
+      // jump to clone of first at end without anim, then animate back to last real
+      setAnimate(false);
+      setIdx(list.length);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        setAnimate(true);
+        setIdx(list.length - 1);
+      }));
+    } else {
+      setIdx((i) => i - 1);
+    }
+  };
+
+  const activeDot = idx % list.length;
 
   return (
     <section className="bg-background py-28 lg:py-40">
@@ -45,18 +76,19 @@ export function ProudProjects() {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            {/* Frame */}
             <div className="relative aspect-[16/9] w-full overflow-hidden border border-border bg-stone shadow-[0_40px_100px_-40px_rgba(40,30,20,0.45)]">
-              {/* Inner gold rule */}
               <div className="pointer-events-none absolute inset-3 z-30 border border-white/15" />
 
-              {/* Track */}
               <div
-                className="flex h-full transition-transform duration-[1100ms] ease-[cubic-bezier(.7,0,.2,1)]"
-                style={{ width: `${list.length * 100}%`, transform: `translateX(-${(100 / list.length) * idx}%)` }}
+                className="flex h-full"
+                style={{
+                  width: `${slides.length * 100}%`,
+                  transform: `translateX(-${(100 / slides.length) * idx}%)`,
+                  transition: animate ? `transform ${TRANSITION_MS}ms cubic-bezier(.7,0,.2,1)` : "none",
+                }}
               >
-                {list.map((p) => (
-                  <div key={p.slug} className="relative h-full" style={{ width: `${100 / list.length}%` }}>
+                {slides.map((p, i) => (
+                  <div key={`${p.slug}-${i}`} className="relative h-full" style={{ width: `${100 / slides.length}%` }}>
                     <img src={p.cover} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent" />
 
@@ -80,10 +112,9 @@ export function ProudProjects() {
                 ))}
               </div>
 
-              {/* Arrows */}
               <button
                 aria-label="Previous project"
-                onClick={() => go(-1)}
+                onClick={goPrev}
                 className={`absolute left-5 top-1/2 z-40 flex h-14 w-14 -translate-y-1/2 items-center justify-center border border-white/40 bg-foreground/30 text-white backdrop-blur-md transition-all duration-500 hover:bg-white hover:text-foreground ${
                   hover ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
                 }`}
@@ -92,7 +123,7 @@ export function ProudProjects() {
               </button>
               <button
                 aria-label="Next project"
-                onClick={() => go(1)}
+                onClick={goNext}
                 className={`absolute right-5 top-1/2 z-40 flex h-14 w-14 -translate-y-1/2 items-center justify-center border border-white/40 bg-foreground/30 text-white backdrop-blur-md transition-all duration-500 hover:bg-white hover:text-foreground ${
                   hover ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0"
                 }`}
@@ -101,7 +132,6 @@ export function ProudProjects() {
               </button>
             </div>
 
-            {/* Indicators */}
             <div className="mt-8 flex items-center justify-end">
               <div className="flex gap-3">
                 {list.map((p, i) => (
@@ -109,7 +139,7 @@ export function ProudProjects() {
                     key={p.slug}
                     onClick={() => setIdx(i)}
                     aria-label={`Go to ${p.name}`}
-                    className={`h-px transition-all duration-500 ${i === idx ? "w-16 bg-foreground" : "w-8 bg-foreground/25 hover:bg-foreground/50"}`}
+                    className={`h-px transition-all duration-500 ${i === activeDot ? "w-16 bg-foreground" : "w-8 bg-foreground/25 hover:bg-foreground/50"}`}
                   />
                 ))}
               </div>

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import heroAsset from "@/assets/projects/hero-main.jpg.asset.json";
+import heroAsset from "@/assets/projects/hero-main-v2.jpg.asset.json";
 
 export function Hero() {
   return (
