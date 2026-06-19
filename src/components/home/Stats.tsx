@@ -39,49 +39,43 @@ function useCount(target: number, decimals = 0) {
 function Stat({ v, suffix, l, k, decimals = 0, num }: { v: number; suffix: string; l: string; k: string; decimals?: number; num: string }) {
   const [val, ref] = useCount(v, decimals);
   return (
-    <div ref={ref} className="group relative flex flex-col gap-5 py-12 lg:py-16">
+    <div ref={ref} className="group relative flex flex-col gap-3 px-6 py-8 lg:px-8">
       <div className="text-[10px] uppercase tracking-[0.32em] text-gold">{num}</div>
-      <div className="font-display text-6xl leading-none text-foreground num sm:text-7xl lg:text-[6rem] xl:text-[7rem]">
+      <div className="font-display text-4xl leading-none text-foreground num sm:text-5xl lg:text-[3.25rem]">
         {val}
         <span className="text-gold">{suffix}</span>
       </div>
-      <div className="mt-2 space-y-1">
-        <div className="font-display text-lg text-foreground sm:text-xl">{l}</div>
+      <div className="space-y-0.5">
+        <div className="font-display text-base text-foreground">{l}</div>
         <div className="text-xs leading-relaxed text-muted-foreground">{k}</div>
       </div>
-      <div className="mt-2 h-px w-12 bg-gold/60 transition-all duration-700 group-hover:w-24" />
+      <div className="mt-1 h-px w-10 bg-gold/60 transition-all duration-700 group-hover:w-20" />
     </div>
   );
 }
 
 export function Stats() {
   return (
-    <section className="relative bg-stone-soft py-24 lg:py-36">
+    <section className="relative bg-stone-soft py-20 lg:py-28">
       <div className="container-x mx-auto max-w-[1400px]">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-4">
-            <div className="eyebrow eyebrow-gold mb-6"><span className="rule" />Impact in Numbers</div>
-            <h2 className="font-display text-4xl leading-[1.02] kerning-tight sm:text-5xl lg:text-[3.5rem]">
-              Two decades.<br />
-              <em className="not-italic text-foreground/65">Measured in trust.</em>
-            </h2>
-            <p className="mt-8 max-w-sm text-sm leading-relaxed text-muted-foreground">
+        <Reveal>
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="eyebrow eyebrow-gold mb-4"><span className="rule" />Impact in Numbers</div>
+              <h2 className="font-display text-3xl leading-[1.05] kerning-tight sm:text-4xl lg:text-[2.5rem]">
+                Two decades. <em className="not-italic text-foreground/65">Measured in trust.</em>
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
               Every figure represents a family welcomed, a brand homed, and a piece of the city carefully composed.
             </p>
-          </Reveal>
-
-          <div className="lg:col-span-8">
-            <div className="grid divide-y divide-border/70 border-y border-border/70 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-              {stats.slice(0, 2).map((s, i) => (
-                <Stat key={s.l} {...s} num={`0${i + 1}`} />
-              ))}
-            </div>
-            <div className="grid divide-y divide-border/70 border-b border-border/70 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-              {stats.slice(2, 4).map((s, i) => (
-                <Stat key={s.l} {...s} num={`0${i + 3}`} />
-              ))}
-            </div>
           </div>
+        </Reveal>
+
+        <div className="mt-12 grid grid-cols-2 divide-y divide-border/70 border-y border-border/70 lg:grid-cols-4 lg:divide-x lg:divide-y-0">
+          {stats.map((s, i) => (
+            <Stat key={s.l} {...s} num={`0${i + 1}`} />
+          ))}
         </div>
       </div>
     </section>
