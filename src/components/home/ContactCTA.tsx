@@ -6,8 +6,8 @@ import ctaBg from "@/assets/projects/cta-bg.jpg.asset.json";
 export function ContactCTA() {
   return (
     <section className="relative isolate overflow-hidden bg-foreground py-32 text-background lg:py-44">
-      <img src={ctaBg.url} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40" loading="lazy" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-foreground via-foreground/85 to-foreground/55" />
+      <img src={ctaBg.url} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-45" loading="lazy" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-foreground/95 via-foreground/80 to-foreground/50" />
 
       <div className="container-x mx-auto max-w-[1400px]">
         <div className="grid items-end gap-16 lg:grid-cols-12">
