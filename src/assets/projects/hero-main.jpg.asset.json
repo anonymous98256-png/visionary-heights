@@ -1,11 +1,1 @@
-{
-  "version": 1,
-  "asset_id": "b7de4af8-cfdb-4e08-94b5-5fa982901bdf",
-  "project_id": "10d7a54c-14b9-41c4-aa4a-c6b30b1c234c",
-  "url": "/__l5e/assets-v1/b7de4af8-cfdb-4e08-94b5-5fa982901bdf/hero-main.jpg",
-  "r2_key": "a/v1/10d7a54c-14b9-41c4-aa4a-c6b30b1c234c/b7de4af8-cfdb-4e08-94b5-5fa982901bdf/hero-main.jpg",
-  "original_filename": "hero-main.jpg",
-  "size": 332671,
-  "content_type": "image/jpeg",
-  "created_at": "2026-06-17T16:42:38Z"
-}
+{"url":"/assets/hero-main.jpg"}

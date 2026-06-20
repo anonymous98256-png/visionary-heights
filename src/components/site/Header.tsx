@@ -38,13 +38,23 @@ export function Header() {
           : "bg-background/90 backdrop-blur-sm border-b border-border/60"
       }`}
     >
-      <div className="container-x mx-auto flex h-20 max-w-[1400px] items-center justify-between">
+      <div
+        className={`container-x mx-auto flex max-w-[1400px] items-center justify-between transition-all duration-500 ${
+          scrolled ? "h-20" : "h-28"
+        }`}
+      >
         <Link to="/" className="flex items-center" aria-label="Ratnanjali Group — Home">
           {/* On dark hero, show inverted (white) logo. On light bg, original logo. */}
           {onLightBg ? (
-            <Logo className="h-10 w-auto md:h-11" variant="dark" />
+            <Logo
+              className={`w-auto transition-all duration-500 ${scrolled ? "h-10 md:h-11" : "h-14 md:h-16"}`}
+              variant="dark"
+            />
           ) : (
-            <Logo className="h-10 w-auto md:h-11 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]" variant="light" />
+            <Logo
+              className={`w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] transition-all duration-500 ${scrolled ? "h-10 md:h-11" : "h-14 md:h-16"}`}
+              variant="light"
+            />
           )}
         </Link>
 
