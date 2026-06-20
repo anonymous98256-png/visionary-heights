@@ -23,23 +23,35 @@ function ProjectsPage() {
 
   return (
     <PageShell>
-      <section className="pb-12 pt-40 lg:pt-48">
-        <div className="container-x mx-auto max-w-[1400px]">
-          <div className="eyebrow eyebrow-gold mb-6"><span className="rule" />Portfolio</div>
-          <h1 className="max-w-4xl font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl kerning-tight">
-            Landmark developments across <em className="text-foreground/70">Ahmedabad.</em>
+      {/* Hero header */}
+      <section className="relative overflow-hidden pb-16 pt-44 lg:pt-52">
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-soft/40 via-transparent to-transparent" />
+        <div className="container-x relative mx-auto max-w-[1400px]">
+          <div className="flex items-center gap-5 mb-8">
+            <span className="h-px w-10 bg-gold/60" />
+            <span className="eyebrow eyebrow-gold">Portfolio</span>
+          </div>
+          <h1 className="max-w-5xl font-display text-[2.75rem] leading-[1.05] sm:text-6xl lg:text-[5.25rem] kerning-tight">
+            Landmark developments
+            <br className="hidden sm:block" />
+            <span className="text-foreground/60"> across Ahmedabad.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            A chronicle of our work — organised by chapter. Move horizontally through each discipline.
+          <p className="mt-8 max-w-xl text-base leading-[1.7] text-muted-foreground sm:text-lg">
+            A chronicle of our work — organised by chapter.
+            <br className="hidden sm:block" />
+            Move horizontally through each discipline.
           </p>
+          <div className="mt-12 h-px w-full max-w-xs bg-gradient-to-r from-border via-border/60 to-transparent" />
         </div>
       </section>
 
-      <CategoryRow num="01" title="Exclusive" subtitle="A curated selection of our most defining work." items={exclusive} />
-      <CategoryRow num="02" title="Residential" subtitle="Apartments, villas and homes built around family life." items={residential} />
-      <CategoryRow num="03" title="Commercial" subtitle="Headquarters, business avenues and prestige offices." items={commercial} />
-      <CategoryRow num="04" title="Hospitality" subtitle="Weekend estates, resorts and clubhouses immersed in landscape." items={hospitality} />
-      <CategoryRow num="05" title="Mixed Use" subtitle="Integrated destinations bringing living, working and leisure together." items={mixedUse} />
+      <div className="space-y-0">
+        <CategoryRow num="01" title="Exclusive" subtitle="A curated selection of our most defining work." items={exclusive} />
+        <CategoryRow num="02" title="Residential" subtitle="Apartments, villas and homes built around family life." items={residential} />
+        <CategoryRow num="03" title="Commercial" subtitle="Headquarters, business avenues and prestige offices." items={commercial} />
+        <CategoryRow num="04" title="Hospitality" subtitle="Weekend estates, resorts and clubhouses immersed in landscape." items={hospitality} />
+        <CategoryRow num="05" title="Mixed Use" subtitle="Integrated destinations bringing living, working and leisure together." items={mixedUse} />
+      </div>
     </PageShell>
   );
 }
