@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { DiamondArrow } from "@/components/site/DiamondArrow";
 import heroAsset from "@/assets/projects/hero-main-v2.jpg.asset.json";
 
 export function Hero() {
@@ -53,7 +53,7 @@ export function Hero() {
               className="group inline-flex items-center gap-3 bg-white px-8 py-4 text-[12px] uppercase tracking-[0.24em] text-foreground transition-all hover:bg-gold-soft"
             >
               Explore Portfolio
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              <DiamondArrow direction="right" size={16} className="transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/contact"
@@ -82,7 +82,7 @@ export function Hero() {
 
       {/* Scroll cue */}
       <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/70 opacity-0 animate-[fade-in_1.6s_ease-out_2s_forwards]">
-        <ArrowDown size={18} className="animate-bounce" />
+        <DiamondArrow direction="down" size={18} className="animate-bounce" />
       </div>
     </section>
   );

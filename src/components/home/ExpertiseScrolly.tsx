@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { DiamondArrow } from "@/components/site/DiamondArrow";
 import hastinapur from "@/assets/projects/hastinapur-night.jpg.asset.json";
 import square from "@/assets/projects/square-hero.jpg.asset.json";
 import ayodhya from "@/assets/projects/ayodhya-pathway.jpg.asset.json";
@@ -154,7 +154,7 @@ export function ExpertiseScrolly() {
                   </p>
                   <Link to="/projects" className="mt-10 inline-flex items-center gap-3 border border-white/60 px-7 py-3.5 text-[11px] uppercase tracking-[0.28em] transition-all hover:bg-white hover:text-foreground">
                     Explore {c.title}
-                    <ArrowUpRight size={14} />
+                    <DiamondArrow direction="up-right" size={14} />
                   </Link>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export function ExpertiseScrolly() {
               >
                 <div className="flex items-start justify-between">
                   <span className="font-display text-base text-white/80 sm:text-lg">{c.num}</span>
-                  <ArrowUpRight size={18} className="text-white/80" />
+                  <DiamondArrow direction="up-right" size={18} className="text-white/80" />
                 </div>
                 <div>
                   <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl">{c.title}</h3>

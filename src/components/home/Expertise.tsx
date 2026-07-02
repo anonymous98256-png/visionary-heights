@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { DiamondArrow } from "@/components/site/DiamondArrow";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import hastinapur from "@/assets/projects/hastinapur-night.jpg.asset.json";
 import square from "@/assets/projects/square-hero.jpg.asset.json";
@@ -40,7 +40,7 @@ export function Expertise() {
                 <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
                   <div className="flex items-start justify-between">
                     <span className="font-display text-xl text-white/80">{s.num}</span>
-                    <ArrowUpRight size={22} className="transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold-soft" />
+                    <DiamondArrow direction="up-right" size={22} className="transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold-soft" />
                   </div>
                   <div>
                     <h3 className="font-display text-3xl sm:text-4xl">{s.title}</h3>

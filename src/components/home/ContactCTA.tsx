@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { DiamondArrow } from "@/components/site/DiamondArrow";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import ctaBg from "@/assets/projects/cta-bg.jpg.asset.json";
 
@@ -26,7 +26,7 @@ export function ContactCTA() {
             <div className="mt-10 flex flex-col gap-3">
               <Link to="/contact" className="group inline-flex w-fit items-center gap-3 bg-white px-8 py-4 text-[12px] uppercase tracking-[0.24em] text-foreground transition-all hover:bg-gold-soft">
                 Contact The Team
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                <DiamondArrow direction="right" size={16} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <div className="mt-6 space-y-2 text-sm text-white/80">
                 <div>+91 79907 48656</div>
