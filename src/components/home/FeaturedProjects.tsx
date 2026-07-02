@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { DiamondArrow } from "@/components/site/DiamondArrow";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import { projects } from "@/lib/projects";
 
@@ -18,7 +18,7 @@ export function FeaturedProjects() {
           <Reveal delay={1}>
             <Link to="/projects" className="group inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.24em]">
               <span className="gold-underline">View All Projects</span>
-              <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <DiamondArrow direction="up-right" size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </Reveal>
         </div>
@@ -43,7 +43,7 @@ export function FeaturedProjects() {
                     <h3 className="mt-2 font-display text-3xl leading-tight sm:text-4xl">{p.name}</h3>
                     <p className="mt-1 text-base italic text-muted-foreground">{p.tagline}</p>
                   </div>
-                  <ArrowUpRight size={22} className="mt-3 shrink-0 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold" />
+                  <DiamondArrow direction="up-right" size={22} className="mt-3 shrink-0 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold" />
                 </div>
               </Link>
             </Reveal>

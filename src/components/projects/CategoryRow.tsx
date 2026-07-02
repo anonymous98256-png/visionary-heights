@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { DiamondArrow } from "@/components/site/DiamondArrow";
 import type { Project } from "@/lib/projects";
+
 
 interface Props {
   num: string;
@@ -67,19 +68,20 @@ export function CategoryRow({ num, title, subtitle, items }: Props) {
               aria-label="Scroll left"
               onClick={() => scrollByCard(-1)}
               disabled={!canPrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 text-foreground/80 transition-all duration-300 hover:border-foreground hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:opacity-25 disabled:hover:border-border/80 disabled:hover:bg-transparent disabled:hover:text-foreground/80"
+              className="flex h-10 w-10 items-center justify-center border border-border/80 text-foreground/80 transition-all duration-300 hover:border-foreground hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:opacity-25 disabled:hover:border-border/80 disabled:hover:bg-transparent disabled:hover:text-foreground/80"
             >
-              <ArrowLeft size={14} strokeWidth={1.5} />
+              <DiamondArrow direction="left" size={14} />
             </button>
             <button
               aria-label="Scroll right"
               onClick={() => scrollByCard(1)}
               disabled={!canNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 text-foreground/80 transition-all duration-300 hover:border-foreground hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:opacity-25 disabled:hover:border-border/80 disabled:hover:bg-transparent disabled:hover:text-foreground/80"
+              className="flex h-10 w-10 items-center justify-center border border-border/80 text-foreground/80 transition-all duration-300 hover:border-foreground hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:opacity-25 disabled:hover:border-border/80 disabled:hover:bg-transparent disabled:hover:text-foreground/80"
             >
-              <ArrowRight size={14} strokeWidth={1.5} />
+              <DiamondArrow direction="right" size={14} />
             </button>
           </div>
+
         </div>
       </div>
 
@@ -96,9 +98,10 @@ export function CategoryRow({ num, title, subtitle, items }: Props) {
         {items.map((p) => (
           <Link
             key={p.slug}
-            to="/projects"
+            to="/projects/$slug"
+            params={{ slug: p.slug }}
             data-card
-            className="group relative block w-[78vw] shrink-0 overflow-hidden sm:w-[42vw] lg:w-[calc((100%-4rem)/3.1)]"
+            className="group relative block w-[78vw] shrink-0 overflow-hidden sm:w-[46vw] lg:w-[calc((100%-2*2rem-2*clamp(2rem,5vw,4rem))/3)]"
             style={{ scrollSnapAlign: "start" }}
           >
             {/* Image container */}
@@ -138,8 +141,8 @@ export function CategoryRow({ num, title, subtitle, items }: Props) {
                 </h3>
                 <p className="mt-1.5 text-sm italic text-muted-foreground/80">{p.tagline}</p>
               </div>
-              <div className="mt-1 shrink-0 rounded-full border border-border/60 p-2 transition-all duration-300 group-hover:border-gold group-hover:bg-gold/10 group-hover:text-gold">
-                <ArrowUpRight size={14} strokeWidth={1.5} />
+              <div className="mt-1 shrink-0 border border-border/60 p-2 transition-all duration-300 group-hover:border-gold group-hover:bg-gold/10 group-hover:text-gold">
+                <DiamondArrow direction="up-right" size={14} />
               </div>
             </div>
 
@@ -147,6 +150,7 @@ export function CategoryRow({ num, title, subtitle, items }: Props) {
             <div className="mt-5 h-px w-0 bg-gradient-to-r from-gold/70 to-transparent transition-all duration-700 group-hover:w-1/2" />
           </Link>
         ))}
+
       </div>
     </section>
   );

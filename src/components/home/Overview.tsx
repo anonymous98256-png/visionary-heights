@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { DiamondArrow } from "@/components/site/DiamondArrow";
 import aboutDetail from "@/assets/projects/about-detail.jpg.asset.json";
 import { Reveal } from "@/components/site/RevealOnScroll";
 
@@ -53,7 +53,7 @@ export function Overview() {
           <Reveal delay={3} className="mt-12">
             <Link to="/about" className="group inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.24em] text-foreground">
               <span className="gold-underline">Read Our Story</span>
-              <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <DiamondArrow direction="up-right" size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </Reveal>
         </div>

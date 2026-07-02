@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { DiamondArrow } from "@/components/site/DiamondArrow";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import { projects } from "@/lib/projects";
 
@@ -65,7 +65,7 @@ export function ProudProjects() {
           <Reveal delay={1}>
             <Link to="/projects" className="group inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.24em]">
               <span className="gold-underline">View All Projects</span>
-              <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <DiamondArrow direction="up-right" size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </Reveal>
         </div>
@@ -119,7 +119,7 @@ export function ProudProjects() {
                   hover ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
                 }`}
               >
-                <ArrowLeft size={18} strokeWidth={1.5} />
+                <DiamondArrow direction="left" size={18} strokeWidth={1.5} />
               </button>
               <button
                 aria-label="Next project"
@@ -128,7 +128,7 @@ export function ProudProjects() {
                   hover ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0"
                 }`}
               >
-                <ArrowRight size={18} strokeWidth={1.5} />
+                <DiamondArrow direction="right" size={18} strokeWidth={1.5} />
               </button>
             </div>
 
